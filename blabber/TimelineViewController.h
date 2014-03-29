@@ -1,5 +1,5 @@
 //
-//  TweetsViewController.h
+//  TimelineViewController.h
 //  blabber
 //
 //  Created by David Ladowitz on 3/29/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TweetsViewController : UIViewController
+@interface TimelineViewController : UITableViewController
 
 @end

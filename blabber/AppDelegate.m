@@ -101,13 +101,17 @@
                     NSLog(@"Your Access token is so nice: %@", accessToken);
                     [client.requestSerializer saveAccessToken:accessToken];
                     
-                    // Calling the homeTimeline API method
-                    [client homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        NSLog(@"You have the best json I've ever seen: %@", responseObject);
-                        
-                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        NSLog(@"Your response is all kinds a busted: %@", error);
-                    }];
+                    
+                    //Create user here
+                    
+                        // Move this somewhere else
+                        // Calling the homeTimeline API method
+                        [client homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            NSLog(@"You have the best json I've ever seen: %@", responseObject);
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            NSLog(@"Your response is all kinds a busted: %@", error);
+                        }];
                     
                 } failure:^(NSError *error) {
                     NSLog(@"You shall not pass! (without an access token)");

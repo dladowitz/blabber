@@ -8,6 +8,9 @@
 
 #import "TweetCell.h"
 
+NSString * const UserDidLoginNotification = @"UserDidLoginNotification";
+NSString * const UserDidLogoutNotification = @"UserDidLogoutNotification";
+
 @implementation TweetCell
 
 - (void)awakeFromNib
