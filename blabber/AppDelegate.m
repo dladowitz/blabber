@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TwitterClient.h"
+#import "User.h"
+#import "TimelineViewController.h"
 
 @implementation NSURL (dictionaryFromQueryString)
 
@@ -101,17 +103,25 @@
                     NSLog(@"Your Access token is so nice: %@", accessToken);
                     [client.requestSerializer saveAccessToken:accessToken];
                     
+                    // Goes to credentials endpoint and gets a json user object
+                    [client getUserWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+                        // Using json object to create local user
+                        [User setCurrentUser:[[User alloc] initWithDictionary:responseObject]];
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        NSLog(@"That user hates you. It took it's ball and went home");
+                    }];
                     
-                    //Create user here
+                    
                     
                         // Move this somewhere else
                         // Calling the homeTimeline API method
-                        [client homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            NSLog(@"You have the best json I've ever seen: %@", responseObject);
-                            
-                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            NSLog(@"Your response is all kinds a busted: %@", error);
-                        }];
+//                        [client homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                            NSLog(@"You have the best json I've ever seen: %@", responseObject);
+//                            
+//                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                            NSLog(@"Your response is all kinds a busted: %@", error);
+//                        }];
                     
                 } failure:^(NSError *error) {
                     NSLog(@"You shall not pass! (without an access token)");
