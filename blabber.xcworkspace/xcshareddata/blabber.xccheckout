@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4F93FF3A-6A83-4241-91D8-C13616C4B146</string>
+	<key>IDESourceControlProjectName</key>
+	<string>blabber</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5350348E-9774-4456-A026-972E8032D2AF</key>
+		<string>ssh://github.com/dladowitz/blabber.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>blabber.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5350348E-9774-4456-A026-972E8032D2AF</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/dladowitz/blabber.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5350348E-9774-4456-A026-972E8032D2AF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5350348E-9774-4456-A026-972E8032D2AF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>blabber</string>
+		</dict>
+	</array>
+</dict>
+</plist>
