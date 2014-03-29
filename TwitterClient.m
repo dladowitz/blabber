@@ -28,10 +28,12 @@
 
 // Does the required authorization steps to login to twitter
 - (void)login {
+    [self.requestSerializer removeAccessToken];
     
     // Fetches a request token with protocol handler to call back to. Returns a requestToken
     [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"POST" callbackURL:[NSURL URLWithString:@"cptwitter://oauth"] scope:nil success:^(BDBOAuthToken *requestToken) {
         NSLog(@"Got the Request Token yo!");
+
         NSLog(@"Its pretty: %@", requestToken.token);
         
         
@@ -45,8 +47,15 @@
         
         
     } failure:^(NSError *error) {
-        NSLog(@"This Request Token shit is all fucked up!");
+        NSLog(@"This Request Token shit is all fucked up: %@", [error description]);
     }];
+}
+
+// Hitting the home timeline api endpoint
+// We should probably grab the json, clean it up and return back a bunch of tweet objects. It'll make it nicer to use
+- (AFHTTPRequestOperation *)homeTimeLineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    return [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:success failure:failure];
 }
 
 @end
