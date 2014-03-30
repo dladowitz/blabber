@@ -58,4 +58,12 @@
     return [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:success failure:failure];
 }
 
+// Hittingtthe credtials api endpoint
+- (AFHTTPRequestOperation *)getUserWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                                       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    
+    return [self GET:@"1.1/account/verify_credentials.json" parameters:nil success:success failure:failure];
+}
+
+
 @end

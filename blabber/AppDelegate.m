@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "TwitterClient.h"
+#import "User.h"
+#import "TimelineViewController.h"
 
 @implementation NSURL (dictionaryFromQueryString)
 
@@ -32,17 +34,31 @@
 
 @end
 
+@interface AppDelegate ()
+
+- (void)updateRootViewController;
+
+@property (nonatomic, strong) LoginViewController *loginViewController;
+@property (nonatomic, strong) UINavigationController *timelineViewController;
+@property (nonatomic, strong) UIViewController *currentViewController;
+
+@end
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+
+    // Sets the root view controller
+    [self.window setRootViewController:self.currentViewController];
     
-    LoginViewController *loginViewController = [[LoginViewController alloc] init];
-    self.window.rootViewController = loginViewController;
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootViewController) name:UserDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootViewController) name:UserDidLogoutNotification object:nil];
+    
     return YES;
 }
 
@@ -101,13 +117,25 @@
                     NSLog(@"Your Access token is so nice: %@", accessToken);
                     [client.requestSerializer saveAccessToken:accessToken];
                     
-                    // Calling the homeTimeline API method
-                    [client homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        NSLog(@"You have the best json I've ever seen: %@", responseObject);
-                        
+                    // Goes to credentials endpoint and gets a json user object
+                    [client getUserWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+                        // Using json object to create local user
+                        [User setCurrentUser:[[User alloc] initWithDictionary:responseObject]];
                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        NSLog(@"Your response is all kinds a busted: %@", error);
+                        NSLog(@"That user hates you. It took it's ball and went home");
                     }];
+                    
+                    
+                    
+                        // Move this somewhere else
+                        // Calling the homeTimeline API method
+//                        [client homeTimeLineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                            NSLog(@"You have the best json I've ever seen: %@", responseObject);
+//                            
+//                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//                            NSLog(@"Your response is all kinds a busted: %@", error);
+//                        }];
                     
                 } failure:^(NSError *error) {
                     NSLog(@"You shall not pass! (without an access token)");
@@ -118,4 +146,35 @@
     }
     return NO;
 }
+
+// Sets root view controller
+- (void)updateRootViewController {
+    
+    [self.window setRootViewController:self.currentViewController];
+}
+
+- (LoginViewController *)loginViewController {
+    if (!_loginViewController) {
+        _loginViewController = [[LoginViewController alloc] init];
+    }
+    return _loginViewController;
+}
+
+- (UINavigationController *)timelineViewController {
+    if (!_timelineViewController) {
+        TimelineViewController *timelineVC = [[TimelineViewController alloc] init];
+        _timelineViewController = [[UINavigationController alloc] initWithRootViewController:timelineVC];
+    }
+    return _timelineViewController;
+}
+
+- (UIViewController *)currentViewController {
+    if ([User currentUser]) {
+        return self.timelineViewController;
+    }
+    else {
+        return self.loginViewController;
+    }
+}
+
 @end
