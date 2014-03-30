@@ -111,5 +111,10 @@
     [self POST:@"https://api.twitter.com/1.1/favorites/create.json" parameters:params success:success failure:failure];
 }
 
+- (void)retweetWithTweetId:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    NSString *path = [NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/retweet/%@.json", tweetId];
+    [self POST:path parameters:nil success:success failure:failure];
+}
+
 
 @end

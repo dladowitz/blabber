@@ -53,7 +53,9 @@
     else {
         self.statusTextView.text = self.current_status;
     }
+
     
+    //////////// These aren't being set. Looks like this was where the RestObject thing came in
 //    [self.profileImageView setImageWithURL:[NSURL URLWithString: [[User currentUser] profile_image_url]]];
 //    self.screenNameLabel.text = [[User currentUser] screen_name];
 //    self.nameLabel.text = [[User currentUser] name];
