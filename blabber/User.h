@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const UserDidLoginNotification;
-extern NSString *const UserdidLogoutNotification;
+extern NSString *const UserDidLogoutNotification;
 
 @interface User : NSObject
 

@@ -34,17 +34,31 @@
 
 @end
 
+@interface AppDelegate ()
+
+- (void)updateRootViewController;
+
+@property (nonatomic, strong) LoginViewController *loginViewController;
+@property (nonatomic, strong) UINavigationController *timelineViewController;
+@property (nonatomic, strong) UIViewController *currentViewController;
+
+@end
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+
+    // Sets the root view controller
+    [self.window setRootViewController:self.currentViewController];
     
-    LoginViewController *loginViewController = [[LoginViewController alloc] init];
-    self.window.rootViewController = loginViewController;
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootViewController) name:UserDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootViewController) name:UserDidLogoutNotification object:nil];
+    
     return YES;
 }
 
@@ -132,4 +146,35 @@
     }
     return NO;
 }
+
+// Sets root view controller
+- (void)updateRootViewController {
+    
+    [self.window setRootViewController:self.currentViewController];
+}
+
+- (LoginViewController *)loginViewController {
+    if (!_loginViewController) {
+        _loginViewController = [[LoginViewController alloc] init];
+    }
+    return _loginViewController;
+}
+
+- (UINavigationController *)timelineViewController {
+    if (!_timelineViewController) {
+        TimelineViewController *timelineVC = [[TimelineViewController alloc] init];
+        _timelineViewController = [[UINavigationController alloc] initWithRootViewController:timelineVC];
+    }
+    return _timelineViewController;
+}
+
+- (UIViewController *)currentViewController {
+    if ([User currentUser]) {
+        return self.timelineViewController;
+    }
+    else {
+        return self.loginViewController;
+    }
+}
+
 @end
