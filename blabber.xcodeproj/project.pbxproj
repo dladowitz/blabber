@@ -13,6 +13,7 @@
 		AC2BCC4A18E7D9A1000D810E /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2BCC4818E7D9A1000D810E /* TimelineViewController.xib */; };
 		AC2BCC4E18E7DD0E000D810E /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2BCC4C18E7DD0E000D810E /* TweetViewController.m */; };
 		AC2BCC4F18E7DD0E000D810E /* TweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2BCC4D18E7DD0E000D810E /* TweetViewController.xib */; };
+		AC2BCC5218E7EC0F000D810E /* UIPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2BCC5118E7EC0F000D810E /* UIPlaceholderTextView.m */; };
 		AC77BFE718E66ED70003EA8C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC77BFE518E66ED70003EA8C /* LoginViewController.m */; };
 		AC77BFE818E66ED70003EA8C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC77BFE618E66ED70003EA8C /* LoginViewController.xib */; };
 		AC77BFF618E74C2A0003EA8C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = AC77BFF518E74C2A0003EA8C /* User.m */; };
@@ -56,6 +57,8 @@
 		AC2BCC4B18E7DD0E000D810E /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
 		AC2BCC4C18E7DD0E000D810E /* TweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewController.m; sourceTree = "<group>"; };
 		AC2BCC4D18E7DD0E000D810E /* TweetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetViewController.xib; sourceTree = "<group>"; };
+		AC2BCC5018E7EC0F000D810E /* UIPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceholderTextView.h; sourceTree = "<group>"; };
+		AC2BCC5118E7EC0F000D810E /* UIPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceholderTextView.m; sourceTree = "<group>"; };
 		AC77BFE118E66D880003EA8C /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwitterClient.h; path = ../TwitterClient.h; sourceTree = "<group>"; };
 		AC77BFE218E66D880003EA8C /* TwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwitterClient.m; path = ../TwitterClient.m; sourceTree = "<group>"; };
 		AC77BFE418E66ED70003EA8C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				ACD5BCA918E75E9300A1B065 /* TweetCell.h */,
 				ACD5BCAA18E75E9300A1B065 /* TweetCell.m */,
 				ACD5BCAB18E75E9300A1B065 /* TweetCell.xib */,
+				AC2BCC5018E7EC0F000D810E /* UIPlaceholderTextView.h */,
+				AC2BCC5118E7EC0F000D810E /* UIPlaceholderTextView.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				ACD5BCA318E75D2200A1B065 /* Tweet.m in Sources */,
 				AC8AE27518E523FC003D4B27 /* AppDelegate.m in Sources */,
 				AC8AE27118E523FC003D4B27 /* main.m in Sources */,
+				AC2BCC5218E7EC0F000D810E /* UIPlaceholderTextView.m in Sources */,
 				ACD5BCAC18E75E9300A1B065 /* TweetCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

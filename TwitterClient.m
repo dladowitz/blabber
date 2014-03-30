@@ -94,7 +94,22 @@
     [self POST:@"https://api.twitter.com/1.1/statuses/update.json" parameters:params success:success failure:failure];
 }
 
+- (void)replyToTweetId:(NSString *)tweetId withStatus:(NSString *) status success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    [params setObject:status forKey:@"status"];
+    [params setObject:tweetId forKey:@"in_reply_to_status_id"];
+    
+    [self POST:@"https://api.twitter.com/1.1/statuses/update.json" parameters:params success:success failure:failure];
+}
 
+- (void)favoriteWithTweetId:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    [params setObject:tweetId forKey:@"id"];
+    
+    [self POST:@"https://api.twitter.com/1.1/favorites/create.json" parameters:params success:success failure:failure];
+}
 
 
 @end
