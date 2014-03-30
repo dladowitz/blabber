@@ -29,20 +29,23 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@dladowitz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43Z-f0-q3q" userLabel="twitterHandleLabel">
-                        <rect key="frame" x="172" y="9" width="64" height="21"/>
+                        <rect key="frame" x="172" y="9" width="81" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4 hrs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srt-Nj-yOQ" userLabel="timeStampLabel">
-                        <rect key="frame" x="261" y="9" width="39" height="21"/>
+                        <rect key="frame" x="261" y="9" width="59" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I'm eating fruit,  isn't that weird" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="223" translatesAutoresizingMaskIntoConstraints="NO" id="GGT-cG-PpX" userLabel="statusLabel">
-                        <rect key="frame" x="69" y="13" width="223" height="59"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="I'm eating fruit salad for dinner,  isn't that weird?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="223" translatesAutoresizingMaskIntoConstraints="NO" id="GGT-cG-PpX" userLabel="statusLabel">
+                        <rect key="frame" x="69" y="28" width="223" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="225" id="Vkg-1g-lYf"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -57,7 +60,7 @@
                 <outlet property="profileImageView" destination="VrV-h8-hdZ" id="rGD-ji-KcF"/>
                 <outlet property="statusLabel" destination="GGT-cG-PpX" id="b1l-7C-i75"/>
                 <outlet property="timeStampLabel" destination="srt-Nj-yOQ" id="jnV-YM-CiV"/>
-                <outlet property="twitterHandleLable" destination="43Z-f0-q3q" id="khZ-T0-M2d"/>
+                <outlet property="twitterHandleLabel" destination="43Z-f0-q3q" id="Xmb-HY-XTo"/>
             </connections>
         </tableViewCell>
     </objects>

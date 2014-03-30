@@ -16,12 +16,13 @@
     
     self = [super init];
     if (self) {
-        self.tweet_id           = dictionary[@"id"];
-        self.tweet_text         = dictionary[@"text"];
-        self.profile_image_url  = dictionary[@"profile_image_url"];
-        self.twitter_handle     = dictionary[@"screen_name"];
-        self.name               = dictionary[@"name"];
-        self.timestamp          = dictionary[@"created_at"];
+        self.tweet_id               = dictionary[@"id"];
+        self.tweet_text             = dictionary[@"text"];
+        self.profile_image_url      = dictionary[@"user"][@"profile_image_url"];
+        self.twitter_handle         = dictionary[@"user"][@"screen_name"];
+        self.name                   = dictionary[@"user"][@"name"];
+        self.timestamp              = dictionary[@"created_at"];
+//        self.relative_timestamp     = [NSDate date] - dictionary[@"created_at"]; the second is just a string
     }
     return self;
 }

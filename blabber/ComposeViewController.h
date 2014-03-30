@@ -1,5 +1,5 @@
 //
-//  TimelineViewController.h
+//  ComposeViewController.h
 //  blabber
 //
 //  Created by David Ladowitz on 3/29/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TimelineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ComposeViewController : UIViewController 
 
 @end

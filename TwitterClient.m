@@ -31,7 +31,11 @@
     [self.requestSerializer removeAccessToken];
     
     // Fetches a request token with protocol handler to call back to. Returns a requestToken
-    [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"POST" callbackURL:[NSURL URLWithString:@"cptwitter://oauth"] scope:nil success:^(BDBOAuthToken *requestToken) {
+    [self fetchRequestTokenWithPath:@"oauth/request_token"
+                             method:@"POST"
+                        callbackURL:[NSURL URLWithString:@"cptwitter://oauth"]
+                              scope:nil success:^(BDBOAuthToken *requestToken) {
+                                  
         NSLog(@"Got the Request Token yo!");
 
         NSLog(@"Its pretty: %@", requestToken.token);
@@ -51,19 +55,46 @@
     }];
 }
 
-// Hitting the home timeline api endpoint
+// Pulling tweets from the home timeline api endpoint
 // We should probably grab the json, clean it up and return back a bunch of tweet objects. It'll make it nicer to use
 - (AFHTTPRequestOperation *)homeTimeLineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                                             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
     return [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:success failure:failure];
 }
 
-// Hittingtthe credtials api endpoint
+// Pulls tweets from hometimeline with extra params added
+- (void)homeTimelineWithCount:(int)count sinceId:(int)sinceId maxId:(int)maxId success:(void (^)(AFHTTPRequestOperation *operation, id response))success
+                                                                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"count": @(count)}];
+    if (sinceId > 0) {
+        [params setObject:@(sinceId) forKey:@"since_id"];
+    }
+    if (maxId > 0) {
+        [params setObject:@(maxId) forKey:@"max_id"];
+    }
+    [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:success failure:failure];
+}
+
+
+// Getting user object from credtials api endpoint
 - (AFHTTPRequestOperation *)getUserWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
     
     return [self GET:@"1.1/account/verify_credentials.json" parameters:nil success:success failure:failure];
 }
+
+// Sending a tweet via the api endpoint
+- (void)updateStatus:(NSString *)status success:(void (^)(AFHTTPRequestOperation *operation, id response))success
+                                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    [params setObject:status forKey:@"status"];
+    
+    [self POST:@"https://api.twitter.com/1.1/statuses/update.json" parameters:params success:success failure:failure];
+}
+
+
 
 
 @end
