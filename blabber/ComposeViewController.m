@@ -54,11 +54,12 @@
         self.statusTextView.text = self.current_status;
     }
 
+    // Setting labels and view from current user
+    User *user = [User currentUser];
+    self.nameLabel.text = user.name;
+    self.screenNameLabel.text = user.screen_name;
+    [self.profileImageView setImageWithURL:[NSURL URLWithString: user.profile_image_url]];
     
-    //////////// These aren't being set. Looks like this was where the RestObject thing came in
-//    [self.profileImageView setImageWithURL:[NSURL URLWithString: [[User currentUser] profile_image_url]]];
-//    self.screenNameLabel.text = [[User currentUser] screen_name];
-//    self.nameLabel.text = [[User currentUser] name];
     
     [self.statusTextView becomeFirstResponder];
 }
@@ -83,9 +84,7 @@
         NSLog(@"Updating Status");
     
         [[TwitterClient instance] updateStatus:self.statusTextView.text success:^(AFHTTPRequestOperation *operation, id response) {
-//           NSString *testString = @"Well keep testing till you get it right";
-//          [[TwitterClient instance] updateStatus:testString success:^(AFHTTPRequestOperation *operation, id response) {
-  
+            
             NSLog(@"Status Updated. Now everyone knows about your cats");
             [self dismissViewControllerAnimated:YES completion:nil];
             

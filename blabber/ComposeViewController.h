@@ -7,16 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "UIPlaceholderTextView.h"
 
 @interface ComposeViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
-// Missing UIPlaceholderTextView - Not sure how to add to xib and drag here
-
-// For now using a UITextView instead
 @property (weak, nonatomic) IBOutlet UITextView *statusTextView;
 @property (strong, nonatomic) NSString *in_reply_to_status_id;
 @property (strong, nonatomic) NSString *current_status;
