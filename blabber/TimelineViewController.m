@@ -53,9 +53,9 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(onComposeButton)];
     
     //Refresh Control
-    //    self.refreshControl = [[UIRefreshControl alloc] init];
-    //    [self.refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
-    //    [self.tableView addSubview:self.refreshControl];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
 }
 
 #pragma mark - Table View Methods
@@ -148,7 +148,16 @@
 }
 
 - (void)refreshView
-{
+{   NSLog(@"Lets see some more tweets!");
+    
+    [[TwitterClient instance] homeTimelineWithCount:20 sinceId:0 maxId:0 success:^(AFHTTPRequestOperation *operation, id response) {
+        NSLog(@"%@", response);
+        self.tweets = [Tweet tweetsWithArray:response];
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"!");
+    }];
+    
     [self.refreshControl endRefreshing];
 }
 

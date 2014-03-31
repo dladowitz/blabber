@@ -38,6 +38,7 @@
                     <rect key="frame" x="109" y="120" width="159" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Stuff people say that no one cares about goes here" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="CVF-8N-1fK" userLabel="tweetStatusLabel">
@@ -56,10 +57,11 @@
                         <constraint firstAttribute="width" constant="90" id="4F3-tg-av9"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qji-fb-FLA">
-                    <rect key="frame" x="20" y="267" width="280" height="40"/>
+                    <rect key="frame" x="20" y="238" width="280" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vev-C7-tKS">
@@ -104,7 +106,7 @@
                 <constraint firstItem="LMn-L9-MD2" firstAttribute="top" secondItem="CVF-8N-1fK" secondAttribute="bottom" constant="20" id="I4e-no-aQX"/>
                 <constraint firstItem="rgI-cO-XDY" firstAttribute="top" secondItem="3oI-cA-ZZs" secondAttribute="bottom" constant="24" id="hgR-mH-M20"/>
                 <constraint firstItem="VAt-6z-Tvw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="lwT-Ap-DLl"/>
-                <constraint firstItem="qji-fb-FLA" firstAttribute="top" secondItem="LMn-L9-MD2" secondAttribute="bottom" constant="19" id="mx5-Dx-cGg"/>
+                <constraint firstItem="qji-fb-FLA" firstAttribute="top" secondItem="LMn-L9-MD2" secondAttribute="bottom" constant="5" id="mx5-Dx-cGg"/>
                 <constraint firstItem="3oI-cA-ZZs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="zKE-UV-Flu"/>
                 <constraint firstItem="VAt-6z-Tvw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="zQ4-Zj-g5u"/>
             </constraints>
