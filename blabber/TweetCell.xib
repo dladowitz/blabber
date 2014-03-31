@@ -21,21 +21,21 @@
                             <constraint firstAttribute="height" constant="48" id="wKg-cr-D11"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="David ladowitz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zL1-uq-sOf" userLabel="nameLabel">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="David ladowitz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zL1-uq-sOf" userLabel="nameLabel">
                         <rect key="frame" x="69" y="9" width="95" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@dladowitz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43Z-f0-q3q" userLabel="twitterHandleLabel">
-                        <rect key="frame" x="172" y="9" width="81" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="@dladowitz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43Z-f0-q3q" userLabel="twitterHandleLabel">
+                        <rect key="frame" x="116" y="9" width="70" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4 hrs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srt-Nj-yOQ" userLabel="timeStampLabel">
-                        <rect key="frame" x="261" y="9" width="59" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="4 hrs" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srt-Nj-yOQ" userLabel="timeStampLabel">
+                        <rect key="frame" x="158" y="9" width="44" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
@@ -51,7 +51,11 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="GGT-cG-PpX" firstAttribute="leading" secondItem="VrV-h8-hdZ" secondAttribute="trailing" constant="7" id="JJa-ML-sKB"/>
                     <constraint firstItem="VrV-h8-hdZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="K8T-Pv-bk6"/>
+                    <constraint firstItem="zL1-uq-sOf" firstAttribute="leading" secondItem="VrV-h8-hdZ" secondAttribute="trailing" constant="7" id="Mci-Rg-OwC"/>
+                    <constraint firstItem="srt-Nj-yOQ" firstAttribute="leading" secondItem="43Z-f0-q3q" secondAttribute="trailing" constant="5" id="QDg-CI-gix"/>
+                    <constraint firstItem="43Z-f0-q3q" firstAttribute="leading" secondItem="zL1-uq-sOf" secondAttribute="trailing" constant="5" id="ZJG-s2-J18"/>
                     <constraint firstItem="VrV-h8-hdZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="mbq-Vf-gaq"/>
                 </constraints>
             </tableViewCellContentView>

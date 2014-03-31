@@ -7,6 +7,8 @@
 //
 
 #import "Tweet.h"
+#import <NSDate+TimeAgo.h>
+
 
 @implementation Tweet
 
@@ -38,6 +40,15 @@
     }
     
     return tweets;
+}
+
+-(NSString *)relative_timestamp
+{
+    NSDateFormatter *datefformat = [[NSDateFormatter alloc] init];
+    [datefformat setDateFormat:@"EEE MMM dd HH:mm:ss Z yyyy"];
+    [datefformat setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    NSDate *tweetDate = [datefformat dateFromString:self.timestamp];
+    return [tweetDate timeAgo];
 }
 
 @end

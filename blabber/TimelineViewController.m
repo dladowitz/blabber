@@ -60,11 +60,6 @@
 
 #pragma mark - Table View Methods
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return 1;
-//}
-
 // Setting number of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -83,8 +78,8 @@
     cell.statusLabel.text = tweet.tweet_text;
     cell.nameLabel.text = tweet.name;
     cell.twitterHandleLabel.text = tweet.twitter_handle;
-//    cell.timeStampLabel.text = tweet.relative_timestamp; This still needs to be computed and set in the tweet model
-    cell.timeStampLabel.text = tweet.timestamp;
+    cell.timeStampLabel.text = tweet.relative_timestamp;
+//    cell.timeStampLabel.text = tweet.timestamp;
     
     [cell.profileImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:tweet.profile_image_url]] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         cell.profileImageView.image = image;
@@ -101,7 +96,7 @@
     Tweet *tweet = self.tweets[indexPath.row];
     
     NSString *text = tweet.tweet_text;
-    UIFont *fontText = [UIFont boldSystemFontOfSize:15.0];
+    UIFont *fontText = [UIFont systemFontOfSize:15.0];
     CGRect rect = [text boundingRectWithSize:CGSizeMake(225, CGFLOAT_MAX)
                                      options:NSStringDrawingUsesLineFragmentOrigin
                                   attributes:@{NSFontAttributeName:fontText}
