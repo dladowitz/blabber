@@ -56,6 +56,29 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    label.textColor = [UIColor whiteColor];
+    self.navigationItem.titleView = label;
+    label.text = NSLocalizedString(@"twitter", @"");
+    [label sizeToFit];
+    
+    
+
+    
+    
+//    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+//    [navigationBar setBackgroundImage:[UIImage new]
+//                       forBarPosition:UIBarPositionAny
+//                           barMetrics:UIBarMetricsDefault];
+    
+//    [navigationBar setShadowImage:[UIImage new]];
+    
+//    [navigationBar.backgroundColor:[[UIColor whiteColor]];
+
+    
 }
 
 #pragma mark - Table View Methods
@@ -73,6 +96,8 @@
     static NSString *cellIdentifier = @"TweetCell";
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     Tweet *tweet = [self.tweets objectAtIndex:indexPath.row];
+
+    cell.backgroundColor = [UIColor colorWithRed:(14/255.0) green:(172/255.0) blue:(255/255.0) alpha:1];
     
     // Setting cell data from Tweet object
     cell.statusLabel.text = tweet.tweet_text;

@@ -155,6 +155,16 @@
         TimelineViewController *timelineVC = [[TimelineViewController alloc] init];
         _timelineViewController = [[UINavigationController alloc] initWithRootViewController:timelineVC];
     }
+    // Set the background and shadow image to get rid of the line.
+//    [_timelineViewController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    _timelineViewController.navigationBar.barTintColor = [UIColor colorWithRed:(14/255.0) green:(172/255.0) blue:(255/255.0) alpha:1];
+    _timelineViewController.navigationBar.tintColor = [UIColor whiteColor]; // sets text color
+    _timelineViewController.navigationBar.shadowImage = [[UIImage alloc] init];
+    
+    for (UIView *view in [[[_timelineViewController.navigationBar subviews] objectAtIndex:0] subviews]) {
+        if ([view isKindOfClass:[UIImageView class]]) view.hidden = YES;
+    }
+    
     return _timelineViewController;
 }
 
