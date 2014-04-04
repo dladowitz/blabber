@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tweets;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (assign, nonatomic) BOOL showMentions;
 
 - (void)onSignOutButton;
 - (void)reload;
@@ -31,8 +32,9 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Twitter";
-        
+//        self.title = @"Twitter";
+
+        self.showMentions = YES;
         [self reload];
     }
     return self;
@@ -57,18 +59,9 @@
     [self.refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont boldSystemFontOfSize:20.0];
-    label.textColor = [UIColor whiteColor];
-    self.navigationItem.titleView = label;
-    label.text = NSLocalizedString(@"twitter", @"");
-    [label sizeToFit];
-    
-    
+    //Title
 
-    
-    
+
 //    UINavigationBar *navigationBar = self.navigationController.navigationBar;
 //    [navigationBar setBackgroundImage:[UIImage new]
 //                       forBarPosition:UIBarPositionAny
@@ -152,16 +145,34 @@
 
 - (void)reload
 {
-    // Getting last 20 tweets from home timeline API
-    [[TwitterClient instance] homeTimelineWithCount:20 sinceId:0 maxId:0 success:^(AFHTTPRequestOperation *operation, id response) {
-        NSLog(@"You've go the best json I've ever seen: %@", response);
+    if (self.showMentions) {
+        // Getting mentions from API
+        [[TwitterClient instance] mentionsWithSuccess:^(AFHTTPRequestOperation *operation, id response) {
+            NSLog(@"You've been mentioned by people: %@", response);
+            
+            // Initializing tweet model with array of json
+            self.tweets = [Tweet tweetsWithArray:response];
+            [self setTitle:@"Mentions"];
+         
+            [self.tableView reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"No one loves you enough to mention you!");
+        }];
+    } else {
+        // Getting last 20 tweets from home timeline API
+            [[TwitterClient instance] homeTimelineWithCount:20 sinceId:0 maxId:0 success:^(AFHTTPRequestOperation *operation, id response) {
+            NSLog(@"You've go the best json I've ever seen: %@", response);
+            
+            // Initializing tweet model with array of json
+            self.tweets = [Tweet tweetsWithArray:response];
+            [self setTitle:@"Home"];
+                
+            [self.tableView reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"You've been very bad. No tweets for you!");
+        }];
+    }
 
-        // Initializing tweet model with array of json
-        self.tweets = [Tweet tweetsWithArray:response];
-        [self.tableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"You've been very bad. No tweets for you!");
-    }];
 }
 
 - (void)onComposeButton
@@ -185,6 +196,17 @@
     
     [self.refreshControl endRefreshing];
 }
+- (void)setTitle:(NSString *)title {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    label.textColor = [UIColor whiteColor];
+    self.navigationItem.titleView = label;
+    label.text = NSLocalizedString(title, @"");
+    [label sizeToFit];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

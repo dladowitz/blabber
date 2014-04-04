@@ -28,6 +28,8 @@
 		AC8AE28018E523FC003D4B27 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8AE26818E523FC003D4B27 /* UIKit.framework */; };
 		AC8AE28818E523FC003D4B27 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC8AE28618E523FC003D4B27 /* InfoPlist.strings */; };
 		AC8AE28A18E523FC003D4B27 /* blabberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8AE28918E523FC003D4B27 /* blabberTests.m */; };
+		AC8EFB6718EE55800063F392 /* MentionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8EFB6518EE55800063F392 /* MentionsViewController.m */; };
+		AC8EFB6818EE55800063F392 /* MentionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8EFB6618EE55800063F392 /* MentionsViewController.xib */; };
 		ACA4324C18E7992500503EDD /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AC77BFE218E66D880003EA8C /* TwitterClient.m */; };
 		ACD5BCA318E75D2200A1B065 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5BCA218E75D2200A1B065 /* Tweet.m */; };
 		ACD5BCAC18E75E9300A1B065 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5BCAA18E75E9300A1B065 /* TweetCell.m */; };
@@ -79,6 +81,9 @@
 		AC8AE28518E523FC003D4B27 /* blabberTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "blabberTests-Info.plist"; sourceTree = "<group>"; };
 		AC8AE28718E523FC003D4B27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AC8AE28918E523FC003D4B27 /* blabberTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = blabberTests.m; sourceTree = "<group>"; };
+		AC8EFB6418EE55800063F392 /* MentionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionsViewController.h; sourceTree = "<group>"; };
+		AC8EFB6518EE55800063F392 /* MentionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsViewController.m; sourceTree = "<group>"; };
+		AC8EFB6618EE55800063F392 /* MentionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MentionsViewController.xib; sourceTree = "<group>"; };
 		ACD5BCA118E75D2200A1B065 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		ACD5BCA218E75D2200A1B065 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		ACD5BCA918E75E9300A1B065 /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
@@ -127,6 +132,9 @@
 				AC2BCC4B18E7DD0E000D810E /* TweetViewController.h */,
 				AC2BCC4C18E7DD0E000D810E /* TweetViewController.m */,
 				AC2BCC4D18E7DD0E000D810E /* TweetViewController.xib */,
+				AC8EFB6418EE55800063F392 /* MentionsViewController.h */,
+				AC8EFB6518EE55800063F392 /* MentionsViewController.m */,
+				AC8EFB6618EE55800063F392 /* MentionsViewController.xib */,
 			);
 			name = "view controllers";
 			sourceTree = "<group>";
@@ -321,6 +329,7 @@
 				AC2BCC4A18E7D9A1000D810E /* TimelineViewController.xib in Resources */,
 				AC8AE27718E523FC003D4B27 /* Images.xcassets in Resources */,
 				AC77BFE818E66ED70003EA8C /* LoginViewController.xib in Resources */,
+				AC8EFB6818EE55800063F392 /* MentionsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +383,7 @@
 			files = (
 				ACA4324C18E7992500503EDD /* TwitterClient.m in Sources */,
 				AC77BFE718E66ED70003EA8C /* LoginViewController.m in Sources */,
+				AC8EFB6718EE55800063F392 /* MentionsViewController.m in Sources */,
 				AC2BCC4918E7D9A1000D810E /* TimelineViewController.m in Sources */,
 				AC2BCC4318E7D934000D810E /* ComposeViewController.m in Sources */,
 				AC2BCC4E18E7DD0E000D810E /* TweetViewController.m in Sources */,
