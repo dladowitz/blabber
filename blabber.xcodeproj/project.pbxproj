@@ -28,6 +28,8 @@
 		AC8AE28018E523FC003D4B27 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8AE26818E523FC003D4B27 /* UIKit.framework */; };
 		AC8AE28818E523FC003D4B27 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC8AE28618E523FC003D4B27 /* InfoPlist.strings */; };
 		AC8AE28A18E523FC003D4B27 /* blabberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8AE28918E523FC003D4B27 /* blabberTests.m */; };
+		AC8EFB6C18EE69BB0063F392 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8EFB6A18EE69BB0063F392 /* ProfileViewController.m */; };
+		AC8EFB6D18EE69BB0063F392 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8EFB6B18EE69BB0063F392 /* ProfileViewController.xib */; };
 		ACA4324C18E7992500503EDD /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AC77BFE218E66D880003EA8C /* TwitterClient.m */; };
 		ACD5BCA318E75D2200A1B065 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5BCA218E75D2200A1B065 /* Tweet.m */; };
 		ACD5BCAC18E75E9300A1B065 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD5BCAA18E75E9300A1B065 /* TweetCell.m */; };
@@ -79,6 +81,9 @@
 		AC8AE28518E523FC003D4B27 /* blabberTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "blabberTests-Info.plist"; sourceTree = "<group>"; };
 		AC8AE28718E523FC003D4B27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AC8AE28918E523FC003D4B27 /* blabberTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = blabberTests.m; sourceTree = "<group>"; };
+		AC8EFB6918EE69BB0063F392 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		AC8EFB6A18EE69BB0063F392 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		AC8EFB6B18EE69BB0063F392 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		ACD5BCA118E75D2200A1B065 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		ACD5BCA218E75D2200A1B065 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		ACD5BCA918E75E9300A1B065 /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
@@ -127,6 +132,9 @@
 				AC2BCC4B18E7DD0E000D810E /* TweetViewController.h */,
 				AC2BCC4C18E7DD0E000D810E /* TweetViewController.m */,
 				AC2BCC4D18E7DD0E000D810E /* TweetViewController.xib */,
+				AC8EFB6918EE69BB0063F392 /* ProfileViewController.h */,
+				AC8EFB6A18EE69BB0063F392 /* ProfileViewController.m */,
+				AC8EFB6B18EE69BB0063F392 /* ProfileViewController.xib */,
 			);
 			name = "view controllers";
 			sourceTree = "<group>";
@@ -316,6 +324,7 @@
 			files = (
 				ACD5BCAD18E75E9300A1B065 /* TweetCell.xib in Resources */,
 				AC2BCC4F18E7DD0E000D810E /* TweetViewController.xib in Resources */,
+				AC8EFB6D18EE69BB0063F392 /* ProfileViewController.xib in Resources */,
 				AC2BCC4418E7D934000D810E /* ComposeViewController.xib in Resources */,
 				AC8AE26F18E523FC003D4B27 /* InfoPlist.strings in Resources */,
 				AC2BCC4A18E7D9A1000D810E /* TimelineViewController.xib in Resources */,
@@ -380,6 +389,7 @@
 				AC77BFF618E74C2A0003EA8C /* User.m in Sources */,
 				ACD5BCA318E75D2200A1B065 /* Tweet.m in Sources */,
 				AC8AE27518E523FC003D4B27 /* AppDelegate.m in Sources */,
+				AC8EFB6C18EE69BB0063F392 /* ProfileViewController.m in Sources */,
 				AC8AE27118E523FC003D4B27 /* main.m in Sources */,
 				ACD5BCAC18E75E9300A1B065 /* TweetCell.m in Sources */,
 			);

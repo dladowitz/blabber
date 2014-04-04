@@ -13,6 +13,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "User.h"
 #import "TwitterClient.h"
+#import "ProfileViewController.h"
 
 @interface TimelineViewController ()
 
@@ -59,19 +60,6 @@
     [self.refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     
-    //Title
-
-
-//    UINavigationBar *navigationBar = self.navigationController.navigationBar;
-//    [navigationBar setBackgroundImage:[UIImage new]
-//                       forBarPosition:UIBarPositionAny
-//                           barMetrics:UIBarMetricsDefault];
-    
-//    [navigationBar setShadowImage:[UIImage new]];
-    
-//    [navigationBar.backgroundColor:[[UIColor whiteColor]];
-
-    
 }
 
 #pragma mark - Table View Methods
@@ -97,7 +85,13 @@
     cell.nameLabel.text = tweet.name;
     cell.twitterHandleLabel.text = tweet.twitter_handle;
     cell.timeStampLabel.text = tweet.relative_timestamp;
-//    cell.timeStampLabel.text = tweet.timestamp;
+
+    // Tap on profile image to go to ProfileViewController
+    UITapGestureRecognizer *tapgesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileOnTap:)];
+
+    [cell.profileImageView setUserInteractionEnabled:YES];
+    [tapgesture setDelegate:self];
+    [cell.profileImageView addGestureRecognizer:tapgesture];
     
     [cell.profileImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:tweet.profile_image_url]] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         cell.profileImageView.image = image;
@@ -206,6 +200,13 @@
     [label sizeToFit];
 }
 
+
+- (void)profileOnTap:(UIGestureRecognizer *)tap
+{
+    NSLog(@"Tapping that");
+    ProfileViewController *profileViewController = [[ProfileViewController alloc] init];
+    [self.navigationController pushViewController:profileViewController animated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning
