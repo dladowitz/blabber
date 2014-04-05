@@ -24,7 +24,7 @@
         self.twitter_handle         = dictionary[@"user"][@"screen_name"];
         self.name                   = dictionary[@"user"][@"name"];
         self.timestamp              = dictionary[@"created_at"];
-//        self.relative_timestamp     = [NSDate date] - dictionary[@"created_at"]; the second is just a string
+        self.user = [[User alloc] initWithDictionary:dictionary[@"user"]];
     }
     return self;
 }

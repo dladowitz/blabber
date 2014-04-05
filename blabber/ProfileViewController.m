@@ -35,9 +35,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.navigationItem.title = @"Profile";
+    [self setupUser];
 }
 
+- (void)setUser:(User *)user
+{
+    NSLog(@"ProfileViewController:setUser %@",user);
+    _user = user;
+    [self setupUser];
+}
+
+- (void)setupUser
+{
+    self.usernameLabel.text = self.user.name;
+    self.twitterHandleLabel.text = self.user.screen_name;
+    [self.userProfileImage setImageWithURL:[NSURL URLWithString:self.user.profile_image_url]];
+    self.tweetCountLabel.text = [NSString stringWithFormat:@"%@",self.user.statusCount];
+    self.followersCountLabel.text = [NSString stringWithFormat:@"%@",self.user.followerCount];
+    self.followingCountLabel.text = [NSString stringWithFormat:@"%@",self.user.friendCount];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

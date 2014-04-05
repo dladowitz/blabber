@@ -66,12 +66,19 @@ static User *currentUser = nil;
         _name              = dictionary[@"name"];
         _profile_image_url = dictionary[@"profile_image_url"];
         _screen_name       = dictionary[@"screen_name"];
+        _followerCount     = dictionary[@"followers_count"];
+        _friendCount       = dictionary[@"friends_count"];
+        _statusCount       = dictionary[@"statuses_count"];
     } else {
         NSLog(@"dictionary is really a block of data");
         NSDictionary *newDictionary = [NSJSONSerialization JSONObjectWithData:dictionary options:NSJSONWritingPrettyPrinted error:nil];
         _name              = newDictionary[@"name"];
         _profile_image_url = newDictionary[@"profile_image_url"];
         _screen_name       = newDictionary[@"screen_name"];
+        _followerCount     = newDictionary[@"followers_count"];
+        _friendCount       = newDictionary[@"friends_count"];
+        _statusCount       = newDictionary[@"statuses_count"];
+        
     }
    
     // Save in case shit gets cray (it got crazy)

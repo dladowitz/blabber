@@ -15,7 +15,7 @@
 #import "TwitterClient.h"
 #import "ProfileViewController.h"
 
-@interface TimelineViewController ()
+@interface TimelineViewController () <UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tweets;
@@ -35,7 +35,7 @@
     if (self) {
 //        self.title = @"Twitter";
 
-        self.showMentions = YES;
+        self.showMentions = NO;
         [self reload];
     }
     return self;
@@ -88,7 +88,8 @@
 
     // Tap on profile image to go to ProfileViewController
     UITapGestureRecognizer *tapgesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileOnTap:)];
-
+    
+    cell.profileImageView.tag = indexPath.row;
     [cell.profileImageView setUserInteractionEnabled:YES];
     [tapgesture setDelegate:self];
     [cell.profileImageView addGestureRecognizer:tapgesture];
@@ -204,8 +205,10 @@
 - (void)profileOnTap:(UIGestureRecognizer *)tap
 {
     NSLog(@"Tapping that");
-    ProfileViewController *profileViewController = [[ProfileViewController alloc] init];
-    [self.navigationController pushViewController:profileViewController animated:YES];
+    Tweet *tweet = [self.tweets objectAtIndex:tap.view.tag];
+    ProfileViewController *pvc = [[ProfileViewController alloc] init];
+    pvc.user = tweet.user;
+    [self.navigationController pushViewController:pvc animated:YES];
 }
 
 
