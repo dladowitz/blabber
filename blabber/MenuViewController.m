@@ -51,6 +51,11 @@
                                       target:self
                                       action:@selector(onSignOutButton)];
     
+    UIBarButtonItem *spaceBarButton = [[UIBarButtonItem alloc]
+                                               initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                               target:nil
+                                               action:nil];
+    
     UIBarButtonItem *composeButton = [[UIBarButtonItem alloc]
                                       initWithTitle:@"Compose"
                                       style:UIBarButtonItemStylePlain
@@ -58,7 +63,7 @@
                                       action:@selector(onComposeButton)];
 
     
-    NSArray *toolbarButtons = @[signOutButton, composeButton];
+    NSArray *toolbarButtons = @[signOutButton, spaceBarButton, composeButton];
     [self setToolbarItems:toolbarButtons];
    
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
