@@ -129,7 +129,9 @@
     Tweet *tweet = self.tweets[indexPath.row];
     
     TweetViewController *tvc = [[TweetViewController alloc] initWithNibName:@"TweetViewController" andModel:tweet bundle:nil];
-    [self.navigationController pushViewController:tvc animated:YES];
+
+    [self presentViewController:tvc animated:YES completion:nil];
+//    [self.navigationController pushViewController:tvc animated:YES];
 }
 
 #pragma mark - Private

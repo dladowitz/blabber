@@ -173,6 +173,10 @@
     if (!_menuViewController) {
         MenuViewController *menuVC = [[MenuViewController alloc] init];
         _menuViewController = [[UINavigationController alloc] initWithRootViewController:menuVC];
+        _menuViewController.toolbarHidden = NO;
+
+        // Hide navigation bar
+        _menuViewController.navigationBarHidden = YES;
     }
     // Set the background and shadow image to get rid of the line.
 //    _timelineViewController.navigationBar.barTintColor = [UIColor colorWithRed:(14/255.0) green:(172/255.0) blue:(255/255.0) alpha:1];

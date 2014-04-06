@@ -37,6 +37,10 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Profile";
+
+    // Adding Buttons to Navigation Bar
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onCancelButton)];
+    
     [self setupUser];
 }
 
@@ -61,6 +65,11 @@
     self.followingCountLabel.text = [NSString stringWithFormat:@"%@",self.user.friendCount];
 
 }
+
+- (void)onCancelButton {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

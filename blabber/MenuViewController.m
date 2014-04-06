@@ -10,6 +10,7 @@
 #import "ProfileViewController.h"
 #import "TimelineViewController.h"
 #import "ComposeViewController.h"
+#import "User.h"
 
 
 @interface MenuViewController ()
@@ -42,6 +43,23 @@
     //Setting navigation buttons
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStyleDone target:self action:@selector(onSignOutButton)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(onComposeButton)];
+    
+    // Setting toolbar items on bottom
+    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc]
+                                      initWithTitle:@"Sign Out"
+                                      style:UIBarButtonItemStylePlain
+                                      target:self
+                                      action:@selector(onSignOutButton)];
+    
+    UIBarButtonItem *composeButton = [[UIBarButtonItem alloc]
+                                      initWithTitle:@"Compose"
+                                      style:UIBarButtonItemStylePlain
+                                      target:self
+                                      action:@selector(onComposeButton)];
+
+    
+    NSArray *toolbarButtons = @[signOutButton, composeButton];
+    [self setToolbarItems:toolbarButtons];
    
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     [self.containerView addGestureRecognizer:panGestureRecognizer];
