@@ -11,6 +11,7 @@
 #import "TwitterClient.h"
 #import "User.h"
 #import "TimelineViewController.h"
+#import "MenuViewController.h"
 
 @implementation NSURL (dictionaryFromQueryString)
 
@@ -41,6 +42,7 @@
 @property (nonatomic, strong) LoginViewController *loginViewController;
 @property (nonatomic, strong) UINavigationController *timelineViewController;
 @property (nonatomic, strong) UIViewController *currentViewController;
+@property (nonatomic, strong) UINavigationController *menuViewController;
 
 @end
 
@@ -156,7 +158,6 @@
         _timelineViewController = [[UINavigationController alloc] initWithRootViewController:timelineVC];
     }
     // Set the background and shadow image to get rid of the line.
-//    [_timelineViewController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     _timelineViewController.navigationBar.barTintColor = [UIColor colorWithRed:(14/255.0) green:(172/255.0) blue:(255/255.0) alpha:1];
     _timelineViewController.navigationBar.tintColor = [UIColor whiteColor]; // sets text color
     _timelineViewController.navigationBar.shadowImage = [[UIImage alloc] init];
@@ -168,9 +169,26 @@
     return _timelineViewController;
 }
 
+- (UINavigationController *)menuViewController {
+    if (!_menuViewController) {
+        MenuViewController *menuVC = [[MenuViewController alloc] init];
+        _menuViewController = [[UINavigationController alloc] initWithRootViewController:menuVC];
+    }
+    // Set the background and shadow image to get rid of the line.
+    _timelineViewController.navigationBar.barTintColor = [UIColor colorWithRed:(14/255.0) green:(172/255.0) blue:(255/255.0) alpha:1];
+    _timelineViewController.navigationBar.tintColor = [UIColor whiteColor]; // sets text color
+    _timelineViewController.navigationBar.shadowImage = [[UIImage alloc] init];
+    
+    for (UIView *view in [[[_timelineViewController.navigationBar subviews] objectAtIndex:0] subviews]) {
+        if ([view isKindOfClass:[UIImageView class]]) view.hidden = YES;
+    }
+    
+    return _menuViewController;
+}
+
 - (UIViewController *)currentViewController {
     if ([User currentUser]) {
-        return self.timelineViewController;
+        return self.menuViewController;
     }
     else {
         return self.loginViewController;
