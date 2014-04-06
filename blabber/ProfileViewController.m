@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tweetCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userProfileBackgroundImage;
 
 
 
@@ -59,7 +60,8 @@
     
     self.usernameLabel.text = self.user.name;
     self.twitterHandleLabel.text = self.user.screen_name;
-    [self.userProfileImage setImageWithURL:[NSURL URLWithString:self.user.profile_image_url]];
+    [self.userProfileImage           setImageWithURL:[NSURL URLWithString:self.user.profile_image_url]];
+    [self.userProfileBackgroundImage setImageWithURL:[NSURL URLWithString:self.user.profileBackgroundImageURL]];
     self.tweetCountLabel.text = [NSString stringWithFormat:@"%@",self.user.statusCount];
     self.followersCountLabel.text = [NSString stringWithFormat:@"%@",self.user.followerCount];
     self.followingCountLabel.text = [NSString stringWithFormat:@"%@",self.user.friendCount];

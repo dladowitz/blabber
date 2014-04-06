@@ -10,6 +10,7 @@
                 <outlet property="followingCountLabel" destination="Rsm-qt-mTj" id="u69-ha-4hF"/>
                 <outlet property="tweetCountLabel" destination="0nV-7Q-iOj" id="h1x-43-E79"/>
                 <outlet property="twitterHandleLabel" destination="tl7-y4-oZg" id="SYy-Zz-JL8"/>
+                <outlet property="userProfileBackgroundImage" destination="dAH-dS-bUE" id="jRd-ev-gYs"/>
                 <outlet property="userProfileImage" destination="gur-iN-zTU" id="mXk-4y-px6"/>
                 <outlet property="usernameLabel" destination="A3I-V5-tQN" id="3oN-hc-ipK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -20,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dAH-dS-bUE">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dAH-dS-bUE" userLabel="userProfileBackgroundImage">
                     <rect key="frame" x="0.0" y="72" width="320" height="244"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>

@@ -32,6 +32,7 @@
     if (self) {
 
         self.viewControllers = @[[[ProfileViewController alloc] init], [[TimelineViewController alloc] init], [[TimelineViewController alloc] init]];
+//        self.viewControllers = @[[[ProfileViewController alloc] init], [[TimelineViewController alloc] initAndShowMentions:NO], [[TimelineViewController alloc] initAndShowMentions:YES]];
     }
     return self;
 }
@@ -66,6 +67,8 @@
     NSArray *toolbarButtons = @[signOutButton, spaceBarButton, composeButton];
     [self setToolbarItems:toolbarButtons];
    
+    
+    // Adding Pan to containterView
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     [self.containerView addGestureRecognizer:panGestureRecognizer];
     
@@ -75,9 +78,12 @@
     UIView *timelineView = ((UIViewController *)self.viewControllers[1]).view;
     timelineView.frame = self.containerView.frame;
     
+    UIView *mentionsView = ((UIViewController *)self.viewControllers[2]).view;
+    timelineView.frame = self.containerView.frame;
     
     [self.containerView addSubview:profileView];
     [self.containerView addSubview:timelineView];
+    [self.containerView addSubview:mentionsView];
 }
 
 - (void)onPan:(UIPanGestureRecognizer *)panGestureRecognizer {
@@ -128,8 +134,8 @@
 
 - (IBAction)onMentionsButton:(id)sender {
     NSLog(@"mention button");
-    UIView *timelineView = ((UIViewController *)self.viewControllers[1]).view;
-    [self.containerView bringSubviewToFront:timelineView];
+    UIView *mentionsView = ((UIViewController *)self.viewControllers[2]).view;
+    [self.containerView bringSubviewToFront:mentionsView];
 }
 
 // Logs user out by setting currentUser to nil
