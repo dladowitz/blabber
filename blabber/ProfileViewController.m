@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import <UIImageView+AFNetworking.h>
+#import "User.h"
 
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -41,19 +42,24 @@
 
 - (void)setUser:(User *)user
 {
-    NSLog(@"ProfileViewController:setUser %@",user);
+    NSLog(@"ProfileViewController:setUser %@",user.name);
     _user = user;
     [self setupUser];
 }
 
 - (void)setupUser
 {
+    if (!self.user) {
+        self.user = [User currentUser];
+    }
+    
     self.usernameLabel.text = self.user.name;
     self.twitterHandleLabel.text = self.user.screen_name;
     [self.userProfileImage setImageWithURL:[NSURL URLWithString:self.user.profile_image_url]];
     self.tweetCountLabel.text = [NSString stringWithFormat:@"%@",self.user.statusCount];
     self.followersCountLabel.text = [NSString stringWithFormat:@"%@",self.user.followerCount];
     self.followingCountLabel.text = [NSString stringWithFormat:@"%@",self.user.friendCount];
+
 }
 - (void)didReceiveMemoryWarning
 {

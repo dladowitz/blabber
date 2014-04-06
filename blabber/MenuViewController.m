@@ -9,6 +9,7 @@
 #import "MenuViewController.h"
 #import "ProfileViewController.h"
 #import "TimelineViewController.h"
+#import "ComposeViewController.h"
 
 
 @interface MenuViewController ()
@@ -37,6 +38,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Setting navigation buttons
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStyleDone target:self action:@selector(onSignOutButton)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(onComposeButton)];
    
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     [self.containerView addGestureRecognizer:panGestureRecognizer];
@@ -102,5 +107,20 @@
     NSLog(@"mention button");
     UIView *timelineView = ((UIViewController *)self.viewControllers[1]).view;
     [self.containerView bringSubviewToFront:timelineView];
+}
+
+// Logs user out by setting currentUser to nil
+- (void)onSignOutButton
+{
+    [User setCurrentUser:nil];
+}
+
+
+- (void)onComposeButton
+{
+    NSLog(@"Compose Button Clicked");
+    ComposeViewController *composeVC = [[ComposeViewController alloc] init];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController: composeVC];
+    [self presentViewController:nvc animated:YES completion:nil];
 }
 @end

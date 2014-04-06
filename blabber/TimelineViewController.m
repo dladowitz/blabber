@@ -14,6 +14,7 @@
 #import "User.h"
 #import "TwitterClient.h"
 #import "ProfileViewController.h"
+#import "MenuViewController.h"
 
 @interface TimelineViewController () <UIGestureRecognizerDelegate>
 
@@ -22,7 +23,7 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (assign, nonatomic) BOOL showMentions;
 
-- (void)onSignOutButton;
+//- (void)onSignOutButton;
 - (void)reload;
 
 @end
@@ -33,7 +34,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        self.title = @"Twitter";
+        self.title = @"Twitter";
 
         self.showMentions = NO;
         [self reload];
@@ -52,8 +53,8 @@
     [self.tableView registerNib:customNib forCellReuseIdentifier:@"TweetCell"];
     
     //Setting navigation buttons
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStyleDone target:self action:@selector(onSignOutButton)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(onComposeButton)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStyleDone target:self action:@selector(onSignOutButton)];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(onComposeButton)];
     
     //Refresh Control
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -123,6 +124,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Selected row %d", indexPath.row);
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     Tweet *tweet = self.tweets[indexPath.row];
     
@@ -132,11 +134,12 @@
 
 #pragma mark - Private
 
+// Moved to Menu View
 // Logs user out by setting currentUser to nil
-- (void)onSignOutButton
-{
-    [User setCurrentUser:nil];
-}
+//- (void)onSignOutButton
+//{
+//    [User setCurrentUser:nil];
+//}
 
 - (void)reload
 {
@@ -170,13 +173,14 @@
 
 }
 
-- (void)onComposeButton
-{
-    NSLog(@"Compose Button Clicked");
-    ComposeViewController *composeVC = [[ComposeViewController alloc] init];
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController: composeVC];
-    [self presentViewController:nvc animated:YES completion:nil];
-}
+// Moved to Menu View
+//- (void)onComposeButton
+//{
+//    NSLog(@"Compose Button Clicked");
+//    ComposeViewController *composeVC = [[ComposeViewController alloc] init];
+//    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController: composeVC];
+//    [self presentViewController:nvc animated:YES completion:nil];
+//}
 
 - (void)refreshView
 {   NSLog(@"Lets see some more tweets!");
@@ -206,9 +210,15 @@
 {
     NSLog(@"Tapping that");
     Tweet *tweet = [self.tweets objectAtIndex:tap.view.tag];
+    
     ProfileViewController *pvc = [[ProfileViewController alloc] init];
     pvc.user = tweet.user;
-    [self.navigationController pushViewController:pvc animated:YES];
+
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController: pvc];
+    [self presentViewController:navigationVC animated:YES completion:nil];
+//    [self.navigationController pushViewController:navigationVC animated:YES];
+    
+    
 }
 
 

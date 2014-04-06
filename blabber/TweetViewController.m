@@ -47,6 +47,8 @@
 {
     [super viewDidLoad];
     
+    NSLog(@"Showing a tweet");
+    
     self.tweetStatusLabel.text = currentTweet.tweet_text;
     self.nameLabel.text = currentTweet.name;
     self.userNameLabel.text = currentTweet.twitter_handle;
