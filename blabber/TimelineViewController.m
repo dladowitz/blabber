@@ -36,17 +36,17 @@
     if (self) {
         self.title = @"Twitter";
         self.showMentions = NO;
-        [self reload];
+ //       [self reload];
     }
     return self;
 }
 
-- (id)initAndShowMentions:(BOOL)showMentions
+- (id)initWithShowMentions:(BOOL)showMentions
 
 {
-    self = [super initWithNibName:nil bundle:nil];
+    self = [super init];
     if (self) {
-        self.title = @"Twitter";
+        self.title = @"Mentions";
         self.showMentions = showMentions;
         [self reload];
     }

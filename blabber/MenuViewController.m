@@ -32,7 +32,7 @@
     if (self) {
 
 //        self.viewControllers = @[[[ProfileViewController alloc] init], [[TimelineViewController alloc] init], [[TimelineViewController alloc] init]];
-        self.viewControllers = @[[[ProfileViewController alloc] init], [[TimelineViewController alloc] initAndShowMentions:NO], [[TimelineViewController alloc] initAndShowMentions:YES]];
+        self.viewControllers = @[[[ProfileViewController alloc] init], [[TimelineViewController alloc] initWithShowMentions:NO], [[TimelineViewController alloc] initWithShowMentions:YES]];
         
     }
     return self;
@@ -80,11 +80,12 @@
     timelineView.frame = self.containerView.frame;
     
     UIView *mentionsView = ((UIViewController *)self.viewControllers[2]).view;
-    timelineView.frame = self.containerView.frame;
+    mentionsView.frame = self.containerView.frame;
     
     [self.containerView addSubview:profileView];
-    [self.containerView addSubview:timelineView];
     [self.containerView addSubview:mentionsView];
+    [self.containerView addSubview:timelineView];
+
 }
 
 - (void)onPan:(UIPanGestureRecognizer *)panGestureRecognizer {
@@ -122,19 +123,19 @@
 }
 
 - (IBAction)onProfileButton:(id)sender {
-    NSLog(@"profile button");
+    NSLog(@"profile button pressed");
     UIView *profileView = ((UIViewController *)self.viewControllers[0]).view;
     [self.containerView bringSubviewToFront:profileView];
 }
 
 - (IBAction)onTimelineButton:(id)sender {
-    NSLog(@"timeline button");
+    NSLog(@"timeline button pressed");
     UIView *timelineView = ((UIViewController *)self.viewControllers[1]).view;
     [self.containerView bringSubviewToFront:timelineView];
 }
 
 - (IBAction)onMentionsButton:(id)sender {
-    NSLog(@"mention button");
+    NSLog(@"mention button pressed");
     UIView *mentionsView = ((UIViewController *)self.viewControllers[2]).view;
     [self.containerView bringSubviewToFront:mentionsView];
 }
