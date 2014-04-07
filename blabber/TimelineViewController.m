@@ -32,11 +32,23 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
         self.title = @"Twitter";
-
         self.showMentions = NO;
+        [self reload];
+    }
+    return self;
+}
+
+- (id)initAndShowMentions:(BOOL)showMentions
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        self.title = @"Twitter";
+        self.showMentions = showMentions;
         [self reload];
     }
     return self;

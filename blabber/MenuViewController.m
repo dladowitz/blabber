@@ -31,8 +31,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 
-        self.viewControllers = @[[[ProfileViewController alloc] init], [[TimelineViewController alloc] init], [[TimelineViewController alloc] init]];
-//        self.viewControllers = @[[[ProfileViewController alloc] init], [[TimelineViewController alloc] initAndShowMentions:NO], [[TimelineViewController alloc] initAndShowMentions:YES]];
+//        self.viewControllers = @[[[ProfileViewController alloc] init], [[TimelineViewController alloc] init], [[TimelineViewController alloc] init]];
+        self.viewControllers = @[[[ProfileViewController alloc] init], [[TimelineViewController alloc] initAndShowMentions:NO], [[TimelineViewController alloc] initAndShowMentions:YES]];
+        
     }
     return self;
 }
