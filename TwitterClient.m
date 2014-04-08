@@ -123,7 +123,10 @@
     [self POST:path parameters:nil success:success failure:failure];
 }
 
-
+- (AFHTTPRequestOperation *)userTimelineWithScreenName:(NSString *)screenName success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure{
+        NSString *path = [NSString stringWithFormat:@"1.1/statuses/user_timeline.json?screen_name=%@", screenName];
+        return [self GET:path parameters:nil success:success failure:failure];
+    }
 
 
 @end

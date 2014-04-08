@@ -9,6 +9,10 @@
 #import "ProfileViewController.h"
 #import <UIImageView+AFNetworking.h>
 #import "User.h"
+#import "Tweet.h"
+#import "TweetCell.h"
+#import "TwitterClient.h"
+
 
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
@@ -18,7 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileBackgroundImage;
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *tweets;
 
 
 @end
@@ -38,11 +43,69 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Profile";
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    UINib *customNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
+    [self.tableView registerNib:customNib forCellReuseIdentifier:@"TweetCell"];
 
     // Adding Buttons to Navigation Bar
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onCancelButton)];
     
     [self setupUser];
+    
+    [self addTweets];
+}
+
+- (void)addTweets
+{
+    [[TwitterClient instance] userTimelineWithScreenName:self.user.screen_name success:^(AFHTTPRequestOperation *operation, id response) {
+        self.tweets = [Tweet tweetsWithArray:response];
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.tableView reloadData];
+    }];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.tweets.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentifier = @"TweetCell";
+    TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    Tweet *tweet = [self.tweets objectAtIndex:indexPath.row];
+    
+    cell.statusLabel.text = tweet.tweet_text;
+    cell.nameLabel.text = tweet.name;
+    cell.twitterHandleLabel.text = tweet.twitter_handle;
+    cell.timeStampLabel.text = tweet.relative_timestamp;
+    
+    [cell.profileImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:tweet.profile_image_url]] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        cell.profileImageView.image = image;
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Tweet *tweet = self.tweets[indexPath.row];
+    
+    NSString *text = tweet.tweet_text;
+    UIFont *fontText = [UIFont systemFontOfSize:15.0];
+    CGRect rect = [text boundingRectWithSize:CGSizeMake(235, CGFLOAT_MAX)
+                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                  attributes:@{NSFontAttributeName:fontText}
+                                     context:nil];
+    
+    CGFloat heightOffset = 45;
+    return rect.size.height + heightOffset;
 }
 
 - (void)setUser:(User *)user
@@ -71,6 +134,7 @@
 - (void)onCancelButton {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 - (void)didReceiveMemoryWarning
 {

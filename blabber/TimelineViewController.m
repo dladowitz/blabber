@@ -36,7 +36,6 @@
     if (self) {
         self.title = @"Twitter";
         self.showMentions = NO;
- //       [self reload];
     }
     return self;
 }
